@@ -85,3 +85,72 @@ void Game::render() {
     SDL_RenderPresent(renderer);
 }
 ```
+
+## Entity-Component System
+
+Each entity in the game can have multiple components.
+
+class Entity:
+- List<Component>
+- Update()
+- Render()
+
+```cpp
+// example
+class Entity {
+    vector<Component*> component;
+    AddComponent<T>(component);
+    Update();
+    Render();
+}
+
+class EntityManager {
+    vector<Entity*> entities;
+    AddEntity(entity);
+    GetEntity(string entityName);
+    Update();
+    Render();
+}
+```
+
+class Component:
+- Update()
+- Render()
+
+```cpp
+// examples
+class Component {
+    Entity* owner;
+    virtual Update();
+    virtual Render();
+}
+
+class TransformComponent: public Component {
+    glm::vec2 position;
+    int width;
+    int height;
+    float scale;
+    Update() override {};
+    Render() override {};
+}
+
+class ColliderComponent: public Component {
+    SDL_Rect collider;
+    Update() override {};
+    Render() override {};
+}
+```
+
+Example child-class components:
+
+- Transform component
+- Sprite component
+- Collider component
+- ParticleEmitter component
+
+The game loop:
+
+- Game
+    - EntityManager (for each entity: `entity.Update()`, `entity.Render()`)
+        - Entity (for each component: `component.Update()`, `component.Render()`)
+
