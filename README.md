@@ -10,7 +10,16 @@ $ sudo apt-get install libsdl2-mixer-dev  # sounds
 $ sudo apt-get install liblua5.3-dev
 ```
 
-Project structure:
+## Run
+
+```text
+$ make
+$ make run
+```
+
+Press `ESC` to exit.
+
+## Project structure:
 
 ```
 $ tree
