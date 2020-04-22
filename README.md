@@ -31,3 +31,18 @@ $ tree
     ├── Game.h
     └── Main.cpp
 ```
+
+## The Game Loop
+
+1. Process input
+2. Update game
+3. Render
+
+```cpp
+// something like
+while (true) {
+    game->processInput();
+    game->update();
+    game->render();
+}
+```
