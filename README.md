@@ -55,3 +55,33 @@ while (true) {
     game->render();
 }
 ```
+
+## Double Buffering
+
+- Color buffer
+- Back buffer
+- Front buffer
+
+Algorithm:
+
+1. Clear the back buffer
+1. Draw all the game objects
+1. Swap the front and back buffers
+
+```cpp
+// general example
+void Game::render() {
+    // set background color
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+
+    // clear the back buffer
+    SDL_RenderClear(renderer);
+
+    // ...
+    // draw all the game objects here
+    // ...
+
+    // swap the front and back buffers
+    SDL_RenderPresent(renderer);
+}
+```
